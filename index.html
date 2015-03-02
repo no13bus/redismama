@@ -1,1 +1,19 @@
-hello world.
+<!-- View the Full Documentation. -->
+<!-- Include the PubNub Library -->
+<script src="http://cdn.bootcss.com/pubnub/3.7.7/pubnub.min.js"></script>
+
+<!-- Instantiate PubNub -->
+<script type="text/javascript">
+
+    var PUBNUB_demo = PUBNUB.init({
+        publish_key: 'pub-c-574982bb-d7cc-4ec1-9683-fe1d89b144ad',
+        subscribe_key: 'sub-c-9a43842c-a77a-11e4-85d5-0619f8945a4f'
+    });
+
+    // Subscribe to the demo_tutorial channel
+    PUBNUB_demo.subscribe({
+        channel: 'cmd',
+        message: function(m){console.log(m)}
+    });
+
+</script>

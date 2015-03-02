@@ -1,0 +1,6 @@
+#coding: utf-8
+
+
+PUBLISH_KEY = 'pub-c-574982bb-d7cc-4ec1-9683-fe1d89b144ad'
+SUBSCRIBE_KEY = 'sub-c-9a43842c-a77a-11e4-85d5-0619f8945a4f'
+REDIS_SERVERS = [('127.0.0.1','6379'),('182.92.155.88','6379')]

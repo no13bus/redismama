@@ -32,6 +32,10 @@ def callback(message):
 #     i.join()
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
+
+r = redis.StrictRedis(host='localhost', port=6379)
 message = r.info()
-# for i in range(20):
+print message
 pubnub.publish(channel, message, callback=callback, error=callback)
+
+15232668960

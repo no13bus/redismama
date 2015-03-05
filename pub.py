@@ -3,19 +3,17 @@ import threading
 from Pubnub import Pubnub
 from config import REDIS_SERVERS, PUBLISH_KEY, SUBSCRIBE_KEY
 import redis
-
+from datetime import datetime
 
 pubnub = Pubnub(publish_key=PUBLISH_KEY, subscribe_key=SUBSCRIBE_KEY, ssl_on=False)
 
-channel = 'cmd'
-message = {'a':1}
-
+channel = 'redismama'
 import time
 
 
-def putmsg(channel,message):
-    for i in range(20):
-        print pubnub.publish(channel, message)
+# def putmsg(channel,message):
+#     for i in range(20):
+#         print pubnub.publish(channel, message)
 
 def callback(message):
     print(message)
@@ -30,12 +28,13 @@ def callback(message):
 # for i in thread_list:
 #     # i.start()
 #     i.join()
-r = redis.StrictRedis(host='localhost', port=6379, db=0)
+
+r = redis.StrictRedis(host='182.92.155.88', port=6379)
 
 
-r = redis.StrictRedis(host='localhost', port=6379)
-message = r.info()
-print message
-pubnub.publish(channel, message, callback=callback, error=callback)
-
-15232668960
+while 1:
+    message = r.info()
+    print message
+    message['time'] =  datetime.strftime(datetime.now(), '%H:%M:%S');
+    pubnub.publish(channel, message, callback=callback, error=callback)
+    time.sleep(1)
